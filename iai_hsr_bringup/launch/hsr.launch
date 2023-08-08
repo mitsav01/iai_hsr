@@ -15,6 +15,6 @@
     </group>
 
     <group if="$(eval arg('velocity_controller') == True)">
-        <include file="$(find iai_donbot_bringup)/launch/cameras.launch"/>
+        <include file="$(find hsr_velocity_controller)/launch/switch_to_velocity_controllers.launch"/>
     </group>
 </launch>
