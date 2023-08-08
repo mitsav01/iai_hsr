@@ -1,0 +1,3 @@
+<launch>
+  <include file="$(find snap_map_icp)/launch/snap_map_icp.launch" />
+</launch>

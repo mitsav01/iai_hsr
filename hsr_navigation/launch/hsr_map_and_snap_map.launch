@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find hsr_navigation)/launch/hsr_map.launch" />
+  <include file="$(find snap_map_icp)/launch/snap_map_icp.launch" />
+</launch>
