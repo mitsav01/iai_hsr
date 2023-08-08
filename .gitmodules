@@ -1,0 +1,3 @@
+[submodule "hsr_description"]
+	path = hsr_description
+	url = git@github.com:code-iai/hsr_description.git
