@@ -1,4 +1,0 @@
-<launch>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find hsr_navigation)/map/apartment_lab_hsr_clean.yaml" />
-  <node name="tf_buffer" pkg="tf2_ros" type="buffer_server" /> 
-</launch>
