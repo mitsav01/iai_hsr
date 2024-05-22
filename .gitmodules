@@ -4,3 +4,6 @@
 [submodule "hsr_meshes"]
 	path = hsr_meshes
 	url = https://github.com/ToyotaResearchInstitute/hsr_meshes.git
+[submodule "hsr_navigation"]
+	path = hsr_navigation
+	url = https://github.com/sunava/hsr_navigation.git
