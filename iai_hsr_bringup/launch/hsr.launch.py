@@ -17,7 +17,7 @@ def generate_launch_description():
         # Include upload_hsrb.launch from hsr_description
         IncludeLaunchDescription(
             launch_description_source=[os.path.join(
-                get_package_share_directory('hsr_description'), 'launch', 'upload_hsrb.launch')],
+                get_package_share_directory('hsr_description'), 'launch', 'hsrb4s_fake_joints.launch.py')],
             launch_arguments={}.items()
         ),
         
@@ -34,14 +34,14 @@ def generate_launch_description():
         # Conditionally include the apartment map launch file
         IncludeLaunchDescription(
             launch_description_source=[os.path.join(
-                get_package_share_directory('hsr_navigation'), 'launch', 'hsr_map.launch')],
+                get_package_share_directory('hsr_navigation'), 'launch', 'hsr_amcl_map.launch.py')],
             condition=IfCondition(LaunchConfiguration('apartment_map'))
         ),
 
         # Conditionally include the velocity controller launch file
         IncludeLaunchDescription(
             launch_description_source=[os.path.join(
-                get_package_share_directory('hsr_velocity_controller'), 'launch', 'switch_to_velocity_controllers.launch')],
+                get_package_share_directory('hsr_velocity_controller'), 'launch', 'switch_to_velocity_controllers.launch.py')],
             condition=IfCondition(LaunchConfiguration('velocity_controller'))
         ),
     ])
