@@ -17,7 +17,7 @@ def generate_launch_description():
         # Include upload_hsrb.launch from hsr_description
         IncludeLaunchDescription(
             launch_description_source=[os.path.join(
-                get_package_share_directory('hsr_description'), 'launch', 'hsrb4s_fake_joints.launch.py')],
+                get_package_share_directory('hsr_description'), 'launch', 'hsrb4s.launch.py')],
             launch_arguments={}.items()
         ),
         

@@ -17,13 +17,14 @@
   <depend>robot_state_publisher</depend>
   <depend>ros2_control</depend>
   <depend>ros2_controllers</depend>
+  <depend>hsr_description</depend>
+  <depend>hsr_navigation</depend>
 
   <!-- The build tool is ament_cmake for ROS2 -->
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <!-- Dependencies for ROS2 message generation -->
   <exec_depend>rosidl_default_runtime</exec_depend>
-
 
   <export>
     <build_type>ament_cmake</build_type>
