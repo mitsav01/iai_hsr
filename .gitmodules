@@ -1,6 +1,8 @@
 [submodule "hsrb_description"]
-	path = hsrb_description
-	url = https://github.com/mitsav01/hsrb_description.git
+    path = hsrb_description
+    url = https://github.com/mitsav01/hsrb_description.git
+    branch = humble
+
 [submodule "hsr_navigation"]
-	path = hsr_navigation
-	url = https://github.com/mitsav01/hsr_navigation.git
+    path = hsr_navigation
+    url = https://github.com/mitsav01/hsr_navigation.git
