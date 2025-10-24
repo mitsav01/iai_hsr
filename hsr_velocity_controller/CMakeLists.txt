@@ -13,7 +13,7 @@ add_library(${PROJECT_NAME} SHARED src/hsr_velocity_controller.cpp)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 ament_target_dependencies(${PROJECT_NAME} rclcpp controller_interface hardware_interface pluginlib std_msgs realtime_tools)
 
-# Install directories (if there are specific resources to install)
+# Install directories
 install(DIRECTORY launch config src
   DESTINATION share/${PROJECT_NAME}
 )
@@ -22,6 +22,14 @@ install(
   TARGETS ${PROJECT_NAME}
   LIBRARY DESTINATION lib
 )
+
+# Install plugin XML
+install(FILES hsr_velocity_controller.xml
+  DESTINATION share/${PROJECT_NAME}
+)
+
+# Export plugin description
+pluginlib_export_plugin_description_file(controller_interface hsr_velocity_controller.xml)
 
 # Export package
 ament_export_dependencies(rclcpp controller_interface hardware_interface pluginlib std_msgs realtime_tools)

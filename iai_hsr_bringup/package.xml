@@ -17,7 +17,7 @@
   <depend>robot_state_publisher</depend>
   <depend>ros2_control</depend>
   <depend>ros2_controllers</depend>
-  <depend>hsr_description</depend>
+  <depend>hsrb_description</depend>
   <depend>hsr_navigation</depend>
 
   <!-- The build tool is ament_cmake for ROS2 -->
