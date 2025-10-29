@@ -19,7 +19,7 @@ Clone the repository into your ROS 2 workspace:
 
 ```bash
 cd ~/ros2_ws/src
-git clone https://github.com/mitsav01/iai_hsr.git --recursive
+git clone https://github.com/code-iai/iai_hsr.git --recursive
 ```
 
 ---

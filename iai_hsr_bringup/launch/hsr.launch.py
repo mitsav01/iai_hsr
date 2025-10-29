@@ -28,11 +28,11 @@ def generate_launch_description():
     # === Robot Description ===
     robot_description_content = Command(
         [PathJoinSubstitution([FindExecutable(name='xacro')]), ' ',
-         PathJoinSubstitution([get_package_share_directory('hsrb_description'), 'robots', description_file])]
+         PathJoinSubstitution([get_package_share_directory('hsr_description'), 'robots', description_file])]
     )
     robot_description = {'robot_description': robot_description_content}
 
-    rviz_config_file = PathJoinSubstitution([get_package_share_directory('hsrb_description'), 'launch', 'display.rviz'])
+    rviz_config_file = PathJoinSubstitution([get_package_share_directory('hsr_description'), 'launch', 'display.rviz'])
 
     # === YAML file path ===
     controller_yaml_file = os.path.join(
@@ -53,26 +53,25 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file]
     )
 
-    joint_state_gui_node = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        name='joint_state_publisher_gui',
-        condition=UnlessCondition(LaunchConfiguration('velocity_controller')),
-    )
-
     # === ros2_control Node ===
     ros2_control_node = Node(
         package='controller_manager',
         executable='ros2_control_node',
         parameters=[
             robot_description,
-            controller_yaml_file,  # Load controller config
-            {'use_sim_time': False}  # Add any other required parameters
+            controller_yaml_file,
+            {'use_sim_time': False}
         ],
         output='screen',
         condition=IfCondition(LaunchConfiguration('velocity_controller')),
     )
-
+    non_actuated_joint_state_pub_node = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher_non_actuated',
+        parameters=[{'use_gui': False}],
+        condition=IfCondition(LaunchConfiguration('velocity_controller'))
+    )
     # === Controller Spawner ===
     velocity_controller_spawner = Node(
         package='controller_manager',
@@ -98,9 +97,9 @@ def generate_launch_description():
         velocity_controller_arg,
         apartment_map_arg,
         robot_state_publisher_node,
-        joint_state_gui_node,
         ros2_control_node,
         rviz_node,
         velocity_controller_spawner,
-        apartment_map_launch
+        apartment_map_launch,
+        non_actuated_joint_state_pub_node
     ])

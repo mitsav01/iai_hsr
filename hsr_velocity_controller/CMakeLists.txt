@@ -8,24 +8,24 @@ find_package(hardware_interface REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(realtime_tools REQUIRED)
-
+find_package(rclcpp_lifecycle REQUIRED)
 add_library(${PROJECT_NAME} SHARED src/hsr_velocity_controller.cpp)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 ament_target_dependencies(${PROJECT_NAME} rclcpp controller_interface hardware_interface pluginlib std_msgs realtime_tools)
 
 # Install directories
 install(DIRECTORY launch config src
-  DESTINATION share/${PROJECT_NAME}
+        DESTINATION share/${PROJECT_NAME}
 )
 
 install(
-  TARGETS ${PROJECT_NAME}
-  LIBRARY DESTINATION lib
+        TARGETS ${PROJECT_NAME}
+        LIBRARY DESTINATION lib
 )
 
 # Install plugin XML
 install(FILES hsr_velocity_controller.xml
-  DESTINATION share/${PROJECT_NAME}
+        DESTINATION share/${PROJECT_NAME}
 )
 
 # Export plugin description

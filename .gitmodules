@@ -1,8 +1,7 @@
-[submodule "hsrb_description"]
-    path = hsrb_description
-    url = https://github.com/mitsav01/hsrb_description.git
-    branch = humble
-
+[submodule "hsr_description"]
+	path = hsr_description
+	url = https://github.com/code-iai/hsr_description.git
+	branch = ros2-jazzy
 [submodule "hsr_navigation"]
-    path = hsr_navigation
-    url = https://github.com/mitsav01/hsr_navigation.git
+	path = hsr_navigation
+	url = https://github.com/sunava/hsr_navigation.git
