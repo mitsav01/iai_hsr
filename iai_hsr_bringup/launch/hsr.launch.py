@@ -74,7 +74,7 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('velocity_controller')),
     )
 
-    # Spawn joint_state_broadcaster first
+    # Spawn joint_state_broadcaster
     joint_state_broadcaster_spawner = Node(
         package='controller_manager',
         executable='spawner',
@@ -83,13 +83,12 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('velocity_controller'))
     )
 
-    # Spawn velocity controller after joint_state_broadcaster
+    # Spawner for velocity controller
     velocity_controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
         arguments=['realtime_body_controller_real', '--controller-manager', '/controller_manager'],
         output='screen',
-        condition=IfCondition(LaunchConfiguration('velocity_controller'))
     )
 
     # Optional apartment map
