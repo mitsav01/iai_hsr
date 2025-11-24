@@ -15,7 +15,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE include)
 ament_target_dependencies(${PROJECT_NAME} rclcpp controller_interface hardware_interface pluginlib std_msgs realtime_tools urdf)
 
 # Install directories
-install(DIRECTORY launch config src
+install(DIRECTORY launch config
         DESTINATION share/${PROJECT_NAME}
 )
 
