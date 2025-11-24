@@ -65,7 +65,7 @@ public:
         return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::ERROR;
       }
 
-      RCLCPP_INFO(get_node()->get_logger(), "Controller configured for %zu joints:", n_joints_);
+      RCLCPP_INFO(get_node()->get_logger(), "Controller configured for %u joints:", n_joints_);
       for (size_t i = 0; i < n_joints_; i++) {
         RCLCPP_INFO(get_node()->get_logger(), "  - %s", joint_names_[i].c_str());
       }
@@ -201,7 +201,9 @@ public:
           old_integrator_[i] = new_integrator;
         }
 
-        bool success = command_interfaces_[i].set_value(next_pos);
+        command_interfaces_[i].set_value(next_pos);
+	    bool success = true;
+
         if (!success) {
           RCLCPP_ERROR_THROTTLE(get_node()->get_logger(), *get_node()->get_clock(), 1000,
                                "Failed to set command for joint %d", i);
@@ -251,7 +253,8 @@ public:
 
     // Set initial command to current position
     for (unsigned int i = 0; i < n_joints_; i++) {
-      bool success = command_interfaces_[i].set_value(js_[i]);
+      command_interfaces_[i].set_value(js_[i]);
+      bool success = true;
       if (!success) {
         RCLCPP_ERROR(get_node()->get_logger(), "Failed to set initial command for joint %d", i);
       } else {

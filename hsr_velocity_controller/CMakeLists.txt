@@ -9,9 +9,10 @@ find_package(pluginlib REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(realtime_tools REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
+find_package(urdf REQUIRED)
 add_library(${PROJECT_NAME} SHARED src/hsr_velocity_controller.cpp)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
-ament_target_dependencies(${PROJECT_NAME} rclcpp controller_interface hardware_interface pluginlib std_msgs realtime_tools)
+ament_target_dependencies(${PROJECT_NAME} rclcpp controller_interface hardware_interface pluginlib std_msgs realtime_tools urdf)
 
 # Install directories
 install(DIRECTORY launch config src
