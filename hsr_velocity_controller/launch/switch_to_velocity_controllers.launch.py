@@ -27,6 +27,7 @@ def generate_launch_description():
         executable='spawner',
         arguments=['realtime_body_controller_real', '--controller-manager', '/controller_manager'],
         output='screen',
+        parameters=[controller_yaml_file]
     )
 
     return LaunchDescription([
