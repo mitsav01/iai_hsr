@@ -47,13 +47,28 @@ public:
     try {
       auto node = get_node();
 
-      // Declare parameters first
-      node->declare_parameter("joints", std::vector<std::string>());
-      node->declare_parameter("p_gains", std::vector<double>());
-      node->declare_parameter("i_gains", std::vector<double>());
-      node->declare_parameter("d_gains", std::vector<double>());
-      node->declare_parameter("feedforward_gains", std::vector<double>());
-      node->declare_parameter("robot_description", std::string(""));
+      // Declare parameters first (if not already declared from YAML)
+      // Use declare_parameter which allows setting default if not already set
+      auto param_joints = rcl_interfaces::msg::ParameterDescriptor{};
+      param_joints.read_only = false;
+      if (!node->has_parameter("joints")) {
+        node->declare_parameter("joints", std::vector<std::string>(), param_joints);
+      }
+      if (!node->has_parameter("p_gains")) {
+        node->declare_parameter("p_gains", std::vector<double>(), param_joints);
+      }
+      if (!node->has_parameter("i_gains")) {
+        node->declare_parameter("i_gains", std::vector<double>(), param_joints);
+      }
+      if (!node->has_parameter("d_gains")) {
+        node->declare_parameter("d_gains", std::vector<double>(), param_joints);
+      }
+      if (!node->has_parameter("feedforward_gains")) {
+        node->declare_parameter("feedforward_gains", std::vector<double>(), param_joints);
+      }
+      if (!node->has_parameter("robot_description")) {
+        node->declare_parameter("robot_description", std::string(""), param_joints);
+      }
 
       // Get joint names parameter
       joint_names_ = node->get_parameter("joints").as_string_array();
